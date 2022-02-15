@@ -8,6 +8,7 @@
 
 	<style>
     body{
+
         background-color: #23a5f0;
     }
 
@@ -148,45 +149,26 @@
 				</p1>
 				<p1 class="text-left">Below are screenshots of <b>"svg/basic/test4.svg"</b> rendered with 
 				sample rate at 1, 4, and 16: </br></p1>
-				<div align="middle">
-					<table>
-						<tr>
-							<td class="text-center">
-								<img src="img/Q2_rate1.png" style = "height:100%; width: 100%;">
-								<figcaption><b>basic test 4, sample rate 1</b></figcaption>
-							</td>
-							<td class="text-center">
-								<img src="img/Q2_rate4.png" style = "height:100%; width: 100%;">
-								<figcaption><b>basic test 4, sample rate 4</b></figcaption>
-							</td>
-							<td class="text-center">
-								<img src="img/Q2_rate16.png" style = "height:100%; width: 100%;">
-								<figcaption><b>basic test 4, sample rate 16</b></figcaption>
-							</td>
-						</tr>
-					</table>
+				<div align="middle" class="text-center">
+					<img src="img/Q2_rate1.png" style = "height:60%; width: 60%;">
+					<figcaption><b>basic test 4, sample rate 1</b></figcaption>
+					<img src="img/Q2_rate4.png" style = "height:60%; width: 60%;">
+					<figcaption><b>basic test 4, sample rate 4</b></figcaption>
+					<img src="img/Q2_rate16.png" style = "height:60%; width: 60%;">
+					<figcaption><b>basic test 4, sample rate 16</b></figcaption>
 				</div>
 				<p1 class="text-left">
 					<b>Extra credit</b>: I used jittered sampling. There is a similarity between jittered and grid-based 
 					sampling: both need to separate each pixel into an nxn grid with n^2 cells. The difference is 
 					that grid-based sampling takes the value in the center of each cell, while jittered sampling 
-					takes the value in the random position of each cell. Below is a comparison: (left is <b>grid-based</b> 
-					sampling and right is the <b>jittered</b> sampling):
+					takes the value in the random position of each cell. Below is a comparison:
 				</p1>
 			</br>
 				<div align="middle">
-					<table>
-						<tr>
-							<td class="text-center">
-								<img src="img/Q2_before_ec.png" style="height:100%; width: 100%;">
-								<figcaption><b>Grid-based supersampling</b></figcaption>
-							</td>
-							<td class="text-center">
-								<img src="img/Q2_after_ec.png" style="height:100%; width: 100%;">
-								<figcaption><b>Jittered supersampling</b></figcaption>
-							</td>
-						</tr>
-					</table>
+					<img src="img/Q2_before_ec.png" style="height:60%; width: 60%;">
+					<figcaption><b>Grid-based supersampling</b></figcaption>
+					<img src="img/Q2_after_ec.png" style="height:60%; width: 60%;">
+					<figcaption><b>Jittered supersampling</b></figcaption>
 				</div>
 			</div>
 		</br>
@@ -254,34 +236,14 @@
 				</p1>
 				</br>
 				<div align="middle" class="text-center">
-					<!--<img src="img/Q5_nearest.png" style = "height:40%; width: 40%;">
+					<img src="img/Q5_nearest.png" style = "height:60%; width: 60%;">
 					<figcaption><b>Nearest pixel sampling, rate 1</b></figcaption>
-					<img src="img/Q5_nearest_rate16.png" style = "height:40%; width: 40%;">
-					<img src="img/Q5_bilinear.png" style = "height:40%; width: 40%;">
-					<img src="img/Q5_bilinear_rate16.png" style = "height:40%; width: 40%;">-->
-					<table>
-						<tr>
-							<td class="text-center">
-								<img src="img/Q5_nearest.png" style = "height:100%; width: 100%;">
-								<figcaption><b>Nearest pixel sampling, rate 1</b></figcaption>
-							</td>
-							<td class="text-center">
-								<img src="img/Q5_nearest_rate16.png" style = "height:100%; width: 100%;">
-								<figcaption><b>Nearest pixel sampling, rate 16</b></figcaption>
-							</td>
-						</tr>
-						<br>
-						<tr>
-							<td class="text-center">
-								<img src="img/Q5_bilinear.png" style = "height:100%; width: 100%;">
-								<figcaption><b>Bilinear pixel sampling, rate 1</b></figcaption>
-							</td>
-							<td class="text-center">
-								<img src="img/Q5_bilinear_rate16.png" style = "height:100%; width: 100%;">
-								<figcaption><b>Bilinear pixel sampling, rate 16</b></figcaption>
-							</td>
-						</tr>
-					</table>
+					<img src="img/Q5_nearest_rate16.png" style = "height:60%; width: 60%;">
+					<figcaption><b>Nearest pixel sampling, rate 16</b></figcaption>
+					<img src="img/Q5_bilinear.png" style = "height:60%; width: 60%;">
+					<figcaption><b>Bilinear pixel sampling, rate 1</b></figcaption>
+					<img src="img/Q5_bilinear_rate16.png" style = "height:60%; width: 60%;">
+					<figcaption><b>Bilinear pixel sampling, rate 16</b></figcaption>
 				</div>
 				<p1 class="text-left">
 					When the sampling rate is increased to 16, clearly both pixel sampling methods render very smooth 
@@ -316,34 +278,15 @@
 					[L_ZERO, P_LINEAR], [L_NEAREST, P_NEAREST], [L_NEAREST, P_LINEAR]:
 				</p1>
 			</br>
-				<div align="middle">
-					<!--<img src="img/Q6_zero_nearest.png" style = "height:40%; width: 40%;">
-					<img src="img/Q6_zero_linear.png" style = "height:40%; width: 40%;">
-					<img src="img/Q6_nearest_nearest.png" style = "height:40%; width: 40%;">
-					<img src="img/Q6_nearest_linear.png" style = "height:40%; width: 40%;">-->
-					<table>
-						<tr>
-							<td class="text-center">
-								<img src="img/Q6_zero_nearest.png" style = "height:100%; width: 100%;">
-								<figcaption><b>L_ZERO, P_NEAREST</b></figcaption>
-							</td>
-							<td class="text-center">
-								<img src="img/Q6_zero_linear.png" style = "height:100%; width: 100%;">
-								<figcaption><b>L_ZERO, P_LINEAR</b></figcaption>
-							</td>
-						</tr>
-						<br>
-						<tr>
-							<td class="text-center">
-								<img src="img/Q6_nearest_nearest.png" style = "height:100%; width: 100%;">
-								<figcaption><b>L_NEAREST, P_NEAREST</b></figcaption>
-							</td>
-							<td class="text-center">
-								<img src="img/Q6_nearest_linear.png" style = "height:100%; width: 100%;">
-								<figcaption><b>L_NEAREST, P_LINEAR</b></figcaption>
-							</td>
-						</tr>
-					</table>
+				<div align="middle" class="text-center">
+					<img src="img/Q6_zero_nearest.png" style = "height:60%; width: 60%;">
+					<figcaption><b>L_ZERO, P_NEAREST</b></figcaption>
+					<img src="img/Q6_zero_linear.png" style = "height:60%; width: 60%;">
+					<figcaption><b>L_ZERO, P_LINEAR</b></figcaption>
+					<img src="img/Q6_nearest_nearest.png" style = "height:60%; width: 60%;">
+					<figcaption><b>L_NEAREST, P_NEAREST</b></figcaption>
+					<img src="img/Q6_nearest_linear.png" style = "height:60%; width: 60%;">
+					<figcaption><b>L_NEAREST, P_LINEAR</b></figcaption>
 				</div>
 			</br></br>
 			<p1 class="text-left">
