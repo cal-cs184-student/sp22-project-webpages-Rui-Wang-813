@@ -1,7 +1,231 @@
+<!DOCTYPE html>
 <html>
 	<head>
+		<title>Project 1 Write-up</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	</head>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+	<style>
+    body{
+        background-color: #23a5f0;
+    }
+
+	#Intro{
+		background-color: azure;
+		border-color: black;
+		border-style: solid;
+	}
+
+    #Overview{
+        background-color: antiquewhite;
+        border-radius: 0.5in;	
+		border-color: black;
+		border-style: solid;	
+    }
+	
+    #TASK1{
+        background-color: #f6f6f6;
+        border-radius: 1in;
+		border-color: black;
+		border-style: solid;
+    }
+
+	#TASK2{
+        background-color: #f6f6f6;
+        border-radius: 1in;
+		border-color: black;
+		border-style: solid;
+    }
+
+	#TASK3{
+        background-color: #f6f6f6;
+        border-radius: 1in;
+		border-color: black;
+		border-style: solid;
+    }
+
+	#TASK4{
+        background-color: #f6f6f6;
+        border-radius: 1in;
+		border-color: black;
+		border-style: solid;
+    }
+
+	#TASK5{
+        background-color: #f6f6f6;
+        border-radius: 1in;
+		border-color: black;
+		border-style: solid;
+    }
+
+	#TASK6{
+        background-color: #f6f6f6;
+        border-radius: 1in;
+		border-color: black;
+		border-style: solid;
+    }
+	</style>
+
 	<body>
-		Project 1 here
+        </br>
+		<div class = "container">
+        </br>
+            <div class = "text-center sticky-top" id = "Intro">
+                <h1 class ="font-weight-normal">Project 1 Write-Up By Rui Wang & Dequan Zhang</h1>
+            </div>
+        </br>
+            <div class = "row">
+                <div class = "text-center" id = "Overview">
+                    <h1 class ="font-weight-bold"> Overview </h1>
+                    <p1 class="text-left">In this project, we write code implementing the graphics techniques taught to us
+                        until lecture 6 to rasterize, supersamle, interpolate colors, texture map for 
+                        triangle meshes, and we also implement transforming the graphs using matrices.
+                        We learned many things from this project, one of such is using what we learn in 
+                        linear algerba and apply it to programing and see the result using C++ instead of 
+                        Python.
+                    </p1>
+                </div>
+            </div>
+        </br>
+				<div class="text-center" id="TASK1">
+					<h1 class="font-italic"> Task 1: Drawing Single-Color Triangles </h1>
+					<p1 class="text-left">First, I get the bounding box by getting the min, max of
+						x and y coordinates of the three triangle vertices. Then, I traverse through the
+						bounding box. For every pixel, I use the algorithm taught in lecture 2 to check if
+						the center of this pixel is within the triangle. If yes, then fill the sample buffer
+						with the given color.</br>
+					</p1>
+					<p1 class="text-left">This solution is no worse than one that checks each sample within
+						the bounding box of the triangle becuase in nature this solution is the same as it.
+						</br>
+					</p1>
+					<p1 class="text-left">Extra credit: to accelerate, I use a boolean flag. In the beginning
+						of every outer iteration, I set the flag to be false. In the inner iteration, if the
+						point is inside the triangle, I set the flag to be true. Else, if the point is not in
+						the triangle but the flag is True, which means that the iteration had entered into the
+						triangle but now it comes out, I just break because it won't go into the triangle any
+						more. I used <b>std::chrono::high_resolution_clock</b> to check the time used for each
+						graph, and the comparison is below (they show time used for test 3, 4, 5, 6, and left
+						shows time before acceleration, while right shows time after):
+						</br>
+					</p1>
+					<img src="img/Q1ec_before.png">
+					<img src="img/Q1ec_after.png">
+					</br>
+					<p1 class="text-left">Below is a screenshot of the rendered <b>"svg/basic/test4.svg"</b>:
+						</br>
+					</p1>
+					<img src="img/Q1_test4.png">
+				</div>
+			</br>
+
+			<div class = "text-center" id = "TASK2">
+				<h1 class ="font-italic"> Task 2: Antialiasing by Supersampling </h1>
+				<p1 class="text-left">It goes with the same iterations as task 1 does. But for every pixel,
+					it has two more layers of iterations, both traversing sqrt(sample_rate) so that I can 
+					sample "sample_rate" number of points in every pixel. Also, I update the functions
+					<b>set_sample_rate</b> and <b>set_framebuffer_target</b> to make sure that the sample 
+					buffer has capacity that matches the sample rate (height * width * sample_rate). Finally,
+					I update the <b>resolve_to_framebuffer</b> function to make sure that each pixel in 
+					the frame buffer gets the averaged down value of the corresponding samples in sample 
+					buffer. </br> 
+				</p1>
+				<p1 class="text-left">Below are screenshots of <b>"svg/basic/test4.svg"</b> rendered with 
+				sample rate at 1, 4, and 16: </br></p1>
+				<img src="img/Q2_rate1.png"></br></br>
+				<img src="img/Q2_rate4.png"></br></br>
+				<img src="img/Q2_rate16.png"></br></br>
+				<p1 class="text-left">
+					Extra credit: I used jittered sampling. There is a similarity between jittered and grid-based 
+					sampling: both need to separate each pixel into an nxn grid with n^2 cells. The difference is 
+					that grid-based sampling takes the value in the center of each cell, while jittered sampling 
+					takes the value in the random position of each cell.
+				</p1>
+			</div>
+		</br>
+
+			<div class = "text-center" id = "TASK3">
+				<h1 class ="font-italic"> Task 3: Transforms</h1>
+				<p1 class="text-left">This robot is weightlifting! I use transformation, scale, and rotate on exisiting polygon and created three more.</p1>
+			</br>
+				<img src="img/my_robot.png" style = "height:50%; width: 50%;">
+			</div>
+		</br>
+
+			<div class = "text-center" id = "TASK4">
+				<h1 class ="font-italic"> Task 4: Barycentric coordinates </h1>
+				<p1 class="text-left">Barycentric coordinate is a coordinate system that we 
+					can use to interpolate values of points inside a triangle based on the
+					values of its vertices. The values include rgb values or texture coordinates.
+				</br>
+				</p1>
+				<p1 class="text-left">Here is an image of a smoothly blended color triangle, 
+					with red, green, blue vertex.
+				</br>
+				</p1>
+				<img src="img/Q4_bary_coord_explain.png"></br>
+				<p1 class="text-left">Below is a png screenshot of <b>"svg/basic/test7.svg"</b> with default 
+					viewing parameters and sample rate 1: </br>
+				</p1>
+				<img src="img/Q4_svg_basic.png">
+			</div>
+		</br>
+
+			<div class = "text-center" id = "TASK5">
+				<h1 class ="font-italic"> Task 5: "Pixel sampling" for texture mapping </h1>
+				<p1 class="text-left">In TASK5, I reuse the code from TASK2 to establish the 
+					iterations. But the work in the iterations are changed. In each iteration, I
+					calculate the uv coordinate (texture coordinate) of the cooresponding x, y 
+					coordinate. Then, I call <b>tex.sample_nearest</b> or <b>tex.sample_bilinear</b>
+					according to whether psm is <b>P_NEAREST</b> or <b>P_LINEAR</b>.
+				</p1>
+				<p1 class="text-left">
+					Here is a part of <b>svg/texmap/test1.svg</b> in which bilinear clear deats nearest.
+				</p1>
+				</br>
+				<img src="img/Q5_nearest.png"></br></br>
+				<img src="img/Q5_nearest_rate16.png"></br></br>
+				<img src="img/Q5_bilinear.png"></br></br>
+				<img src="img/Q5_bilinear_rate16.png"></br></br>
+				<p1 class="text-left">
+					When the screen pixels cannot cover all details, bilinear approach defeats nearest approach.
+				</p1>
+			</div>
+		</br>
+
+			<div class = "text-center" id = "TASK6">
+				<h1 class ="font-italic"> Task 6: "Level sampling" with mipmaps for <br> texture mapping </h1>
+				<p1 class="text-left">Level sampling basically means to use texture sample on different
+					levels of mipmap according to the level calculated using formulas based on coordinate
+					differentials. 
+				</p1>
+			</br>
+				<p1 class="text-left"> To implement <b>L_ZERO</b>, I did not do anything special and
+					repeated the work I did for TASK5 as this is basically sampling on the full resolution 
+					level.<br> To implement <b>L_NEAREST</b>, I use the <b>get_level</b> function, which
+					I impelmented to calculate the level number according to the dx_uv and dy_uv vectors.
+					I clip the level when the result is less than 0 or larger than max number of levels.
+				</p1>
+			</br>
+				<p1 class="text-left">
+					There certainly is a tradeoff between the Antialiasing power, memory, and time usage.
+					When I switch from L_ZERO to L_NEAREST, or L_NEAREST to L_LINEAR, it takes a noticeable
+					amount of time. Among the three techniques, L_LINEAR has the strongest Antialiasing power,
+					but requires largest amount of time and memory usage. L_ZERO uses full resolution, but shows
+					clear aliasing problem when differentials of uv w.r.t x and y are large, but it apparently requires
+					least amount of time and memory among the three techniques. L_NEAREST is in the middle.
+				</p1>
+				<p1 class="text-left">
+					Below are screenshots of a png of my own respectively in [L_ZERO, P_NEAREST], 
+					[L_ZERO, P_LINEAR], [L_NEAREST, P_NEAREST], [L_NEAREST, P_LINEAR]:
+				</p1>
+			</br>
+				<img src="img/Q6_zero_nearest.png"></br></br>
+				<img src="img/Q6_zero_linear.png"></br></br>
+				<img src="img/Q6_nearest_nearest.png"></br></br>
+				<img src="img/Q6_nearest_linear.png">
+			</div>
+		</div>
 	</body>
 </html>
