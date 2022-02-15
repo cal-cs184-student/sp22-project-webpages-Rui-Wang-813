@@ -87,7 +87,7 @@
                 </div>
             </div>
         </br>
-				<div class="text-center" id="TASK1">
+				<div id="TASK1">
 					<h1 class="text-center font-italic"> Task 1: Drawing Single-Color Triangles </h1>
 					<p1 class="text-left">First, I get the bounding box by getting the min, max of
 						x and y coordinates of the three triangle vertices. Then, I traverse through the
@@ -97,30 +97,46 @@
 					</p1>
 					<p1 class="text-left">This solution is no worse than one that checks each sample within
 						the bounding box of the triangle becuase in nature this solution is the same as it.
+					</p1>
+				</br>
+					<p1 class="text-left">Below is a screenshot of the rendered <b>"svg/basic/test4.svg"</b>:
 						</br>
 					</p1>
-					<p1 class="text-left">Extra credit: to accelerate, I use a boolean flag. In the beginning
+					<div align="middle" class="text-center">
+						<img src="img/Q1_test4.png">
+						<figcaption><b>Basic test 4</b></figcaption>
+					</div>
+				</br>
+					<p1 class="text-left">
+						<b>Extra credit</b>: to accelerate, I use a boolean flag. In the beginning
 						of every outer iteration, I set the flag to be false. In the inner iteration, if the
 						point is inside the triangle, I set the flag to be true. Else, if the point is not in
 						the triangle but the flag is True, which means that the iteration had entered into the
 						triangle but now it comes out, I just break because it won't go into the triangle any
 						more. I used <b>std::chrono::high_resolution_clock</b> to check the time used for each
-						graph, and the comparison is below (they show time used for test 3, 4, 5, 6, and left
-						shows time before acceleration, while right shows time after):
+						graph, and the comparison is below (they show time used for test 3, 4, 5, 6, and <b>left</b>
+						shows time <b>before acceleration</b>, while <b>right</b> shows <b>time after acceleration</b>):
 						</br>
 					</p1>
-					<img src="img/Q1ec_before.png">
-					<img src="img/Q1ec_after.png">
-					</br>
-					<p1 class="text-left">Below is a screenshot of the rendered <b>"svg/basic/test4.svg"</b>:
-						</br>
-					</p1>
-					<img src="img/Q1_test4.png">
+					<div align="middle">						
+						<table>
+							<tr>
+								<td class="text-center">
+									<img src="img/Q1ec_before.png" align="middle" />
+									<figcaption><b>Before acceleration</b></figcaption>
+								</td>
+								<td class="text-center">
+									<img src="img/Q1ec_after.png" align="middle">
+									<figcaption></b>After acceleration</b></figcaption>
+								</td>
+							</tr>
+						</table>
+					</div>
 				</div>
 			</br>
 
-			<div class = "text-center" id = "TASK2">
-				<h1 class ="font-italic"> Task 2: Antialiasing by Supersampling </h1>
+			<div id = "TASK2">
+				<h1 class ="text-center font-italic"> Task 2: Antialiasing by Supersampling </h1>
 				<p1 class="text-left">It goes with the same iterations as task 1 does. But for every pixel,
 					it has two more layers of iterations, both traversing sqrt(sample_rate) so that I can 
 					sample "sample_rate" number of points in every pixel. Also, I update the functions
@@ -132,27 +148,57 @@
 				</p1>
 				<p1 class="text-left">Below are screenshots of <b>"svg/basic/test4.svg"</b> rendered with 
 				sample rate at 1, 4, and 16: </br></p1>
-				<img src="img/Q2_rate1.png" style = "height:30%; width: 30%;">
-				<img src="img/Q2_rate4.png" style = "height:30%; width: 30%;">
-				<img src="img/Q2_rate16.png" style = "height:30%; width: 30%;"></br></br>
+				<div align="middle">
+					<table>
+						<tr>
+							<td class="text-center">
+								<img src="img/Q2_rate1.png" style = "height:100%; width: 100%;">
+								<figcaption><b>basic test 4, sample rate 1</b></figcaption>
+							</td>
+							<td class="text-center">
+								<img src="img/Q2_rate4.png" style = "height:100%; width: 100%;">
+								<figcaption><b>basic test 4, sample rate 4</b></figcaption>
+							</td>
+							<td class="text-center">
+								<img src="img/Q2_rate16.png" style = "height:100%; width: 100%;">
+								<figcaption><b>basic test 4, sample rate 16</b></figcaption>
+							</td>
+						</tr>
+					</table>
+				</div>
 				<p1 class="text-left">
-					Extra credit: I used jittered sampling. There is a similarity between jittered and grid-based 
+					<b>Extra credit</b>: I used jittered sampling. There is a similarity between jittered and grid-based 
 					sampling: both need to separate each pixel into an nxn grid with n^2 cells. The difference is 
 					that grid-based sampling takes the value in the center of each cell, while jittered sampling 
 					takes the value in the random position of each cell. Below is a comparison: (left is <b>grid-based</b> 
 					sampling and right is the <b>jittered</b> sampling):
 				</p1>
 			</br>
-				<img src="img/Q2_before_ec.png" style="height:40%; width: 40%;">
-				<img src="img/Q2_after_ec.png" style="height:40%; width: 40%;">
+				<div align="middle">
+					<table>
+						<tr>
+							<td class="text-center">
+								<img src="img/Q2_before_ec.png" style="height:100%; width: 100%;">
+								<figcaption><b>Grid-based supersampling</b></figcaption>
+							</td>
+							<td class="text-center">
+								<img src="img/Q2_after_ec.png" style="height:100%; width: 100%;">
+								<figcaption><b>Jittered supersampling</b></figcaption>
+							</td>
+						</tr>
+					</table>
+				</div>
 			</div>
 		</br>
 
-			<div class = "text-center" id = "TASK3">
+			<div id = "TASK3" class="text-center">
 				<h1 class ="font-italic"> Task 3: Transforms</h1>
-				<p1 class="text-left">This robot is weightlifting! I use transformation, scale, and rotate on exisiting polygon and created three more.</p1>
+				<p1>This robot is weightlifting! I use transformation, scale, and rotate on exisiting polygon and created three more.</p1>
 			</br>
-				<img src="img/my_robot.png" style = "height:50%; width: 50%;">
+				<div>
+					<img src="img/my_robot.png" style = "height:50%; width: 50%;">
+					<figcaption><b>My robot</b></figcaption>
+				</div>
 			</div>
 		</br>
 
@@ -167,14 +213,16 @@
 					with red, green, blue vertex.				
 				</p1>
 			</br>
-				<div align="center">
+				<div align="center" class="text-center">
 					<img src="img/Q4_bary_coord_explain.png">
+					<figcaption><b>Barycentric coordinate explanation</b></figcaption>
 				</div>
 				<p1 class="text-left">Below is a png screenshot of <b>"svg/basic/test7.svg"</b> with default 
 					viewing parameters and sample rate 1: </br>
 				</p1>
-				<div align="center">
+				<div align="center" class="text-center">
 					<img src="img/Q4_svg_basic.png">
+					<figcaption><b>Basic test 7</b></figcaption>
 				</div>
 			</div>
 		</br>
@@ -196,19 +244,44 @@
 					<b>sample_bilinear</b>: find four nearest texels, get their colors, and use the lerp function we learnt
 					from lecture to do bilinear interpolation to get the color of uv:					
 				</p1>
-				<div align="middle">
+				<div align="middle" class="text-center">
 					<img src="img/Q5_bilinear_explain.png" style="height:40%; width: 40%;">
+					<figcaption><b>Bilinear interpolation explanation</b></figcaption>
 				</div>
 			</br>
 				<p1 class="text-left">
 					Here is a part of <b>svg/texmap/test1.svg</b> in which bilinear clear defeats nearest.
 				</p1>
 				</br>
-				<div align="middle">
-					<img src="img/Q5_nearest.png" style = "height:40%; width: 40%;">
+				<div align="middle" class="text-center">
+					<!--<img src="img/Q5_nearest.png" style = "height:40%; width: 40%;">
+					<figcaption><b>Nearest pixel sampling, rate 1</b></figcaption>
 					<img src="img/Q5_nearest_rate16.png" style = "height:40%; width: 40%;">
 					<img src="img/Q5_bilinear.png" style = "height:40%; width: 40%;">
-					<img src="img/Q5_bilinear_rate16.png" style = "height:40%; width: 40%;"><br><br>
+					<img src="img/Q5_bilinear_rate16.png" style = "height:40%; width: 40%;">-->
+					<table>
+						<tr>
+							<td class="text-center">
+								<img src="img/Q5_nearest.png" style = "height:100%; width: 100%;">
+								<figcaption><b>Nearest pixel sampling, rate 1</b></figcaption>
+							</td>
+							<td class="text-center">
+								<img src="img/Q5_nearest_rate16.png" style = "height:100%; width: 100%;">
+								<figcaption><b>Nearest pixel sampling, rate 16</b></figcaption>
+							</td>
+						</tr>
+						<br>
+						<tr>
+							<td class="text-center">
+								<img src="img/Q5_bilinear.png" style = "height:100%; width: 100%;">
+								<figcaption><b>Bilinear pixel sampling, rate 1</b></figcaption>
+							</td>
+							<td class="text-center">
+								<img src="img/Q5_bilinear_rate16.png" style = "height:100%; width: 100%;">
+								<figcaption><b>Bilinear pixel sampling, rate 16</b></figcaption>
+							</td>
+						</tr>
+					</table>
 				</div>
 				<p1 class="text-left">
 					When the sampling rate is increased to 16, clearly both pixel sampling methods render very smooth 
@@ -227,8 +300,9 @@
 					differentials in the function <b>get_level</b>:
 				</p1>
 			</br>
-				<div align="middle">
+				<div align="middle" class="text-center">
 					<img src="img/Q6_explain_level.png" style="height:40%; width: 40%;">
+					<figcaption><b>Level calculation explanation</b></figcaption>
 				</div>
 				<p1 class="text-left"> To implement <b>L_ZERO</b>, I did not do anything special and
 					repeated the work I did for TASK5 as this is basically sampling on the full resolution 
@@ -243,10 +317,33 @@
 				</p1>
 			</br>
 				<div align="middle">
-					<img src="img/Q6_zero_nearest.png" style = "height:40%; width: 40%;">
+					<!--<img src="img/Q6_zero_nearest.png" style = "height:40%; width: 40%;">
 					<img src="img/Q6_zero_linear.png" style = "height:40%; width: 40%;">
 					<img src="img/Q6_nearest_nearest.png" style = "height:40%; width: 40%;">
-					<img src="img/Q6_nearest_linear.png" style = "height:40%; width: 40%;">
+					<img src="img/Q6_nearest_linear.png" style = "height:40%; width: 40%;">-->
+					<table>
+						<tr>
+							<td class="text-center">
+								<img src="img/Q6_zero_nearest.png" style = "height:100%; width: 100%;">
+								<figcaption><b>L_ZERO, P_NEAREST</b></figcaption>
+							</td>
+							<td class="text-center">
+								<img src="img/Q6_zero_linear.png" style = "height:100%; width: 100%;">
+								<figcaption><b>L_ZERO, P_LINEAR</b></figcaption>
+							</td>
+						</tr>
+						<br>
+						<tr>
+							<td class="text-center">
+								<img src="img/Q6_nearest_nearest.png" style = "height:100%; width: 100%;">
+								<figcaption><b>L_NEAREST, P_NEAREST</b></figcaption>
+							</td>
+							<td class="text-center">
+								<img src="img/Q6_nearest_linear.png" style = "height:100%; width: 100%;">
+								<figcaption><b>L_NEAREST, P_LINEAR</b></figcaption>
+							</td>
+						</tr>
+					</table>
 				</div>
 			</br></br>
 			<p1 class="text-left">
@@ -296,7 +393,13 @@
 						</li>
 					  </ul>
 					</li>
-				  </ul>
+				</ul>
+				<p1>So, in <b>general</b>, bilinear pixel sampling does not cost much time and memory, but has good 
+					antialiasing effect when we use lower cost. Both bilinear and nearest level sampling has a strong antialiasing power 
+					for high resolution texture for object of some distance, while level sampling does cost some more time and memory
+					usage(but not much, note that mipmap levels only require to 1/3 more memory). Supersampling can be most powerful in 
+					antialiasing, but it can also be most expensive.
+				</p1>
 			</p1>
 			</div>
 		</br>
@@ -310,11 +413,12 @@
 					the result of the cosine and sine functions by 10 to enlarge the amplitude of the wave. Now I get the 
 					1202 points (601 up and 601 down), I construct 600 rectangles out of them, taking every two of the 
 					upper points and every two of the down points, and further divide these rectangles into two triangles.
-					I made two of this shape. One is filled with grey color, another filled with randomly generated color. These 
+					I made two of this shape. One is filled with grey color, another filled with colors changing from 
+					(1,0,0) to (0,0,1) (upper vertices) and (0,1,0) to (1,0,1) (bottom vertices). These 
 					triangles are interpolated by the colors at its vertices. <br> What I like of this pair of shapes
 					is that it looks like the grey one is the shadow of the colorful one.
 				</p1>
-				<div align="center">
+				<div align="center" class="text-center">
 					<img src="img/competition.png">
 				</div>
 			</div>
