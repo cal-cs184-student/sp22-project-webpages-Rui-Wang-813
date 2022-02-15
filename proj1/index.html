@@ -19,49 +19,48 @@
 
     #Overview{
         background-color: antiquewhite;
-        border-radius: 0.5in;	
 		border-color: black;
 		border-style: solid;	
     }
 	
     #TASK1{
         background-color: #f6f6f6;
-        border-radius: 1in;
 		border-color: black;
 		border-style: solid;
     }
 
 	#TASK2{
         background-color: #f6f6f6;
-        border-radius: 1in;
 		border-color: black;
 		border-style: solid;
     }
 
 	#TASK3{
         background-color: #f6f6f6;
-        border-radius: 1in;
 		border-color: black;
 		border-style: solid;
     }
 
 	#TASK4{
         background-color: #f6f6f6;
-        border-radius: 1in;
 		border-color: black;
 		border-style: solid;
     }
 
 	#TASK5{
         background-color: #f6f6f6;
-        border-radius: 1in;
 		border-color: black;
 		border-style: solid;
     }
 
 	#TASK6{
         background-color: #f6f6f6;
-        border-radius: 1in;
+		border-color: black;
+		border-style: solid;
+    }
+
+	#TASK-EC{
+        background-color: #f6f6f6;
 		border-color: black;
 		border-style: solid;
     }
@@ -89,7 +88,7 @@
             </div>
         </br>
 				<div class="text-center" id="TASK1">
-					<h1 class="font-italic"> Task 1: Drawing Single-Color Triangles </h1>
+					<h1 class="text-center font-italic"> Task 1: Drawing Single-Color Triangles </h1>
 					<p1 class="text-left">First, I get the bounding box by getting the min, max of
 						x and y coordinates of the three triangle vertices. Then, I traverse through the
 						bounding box. For every pixel, I use the algorithm taught in lecture 2 to check if
@@ -133,15 +132,19 @@
 				</p1>
 				<p1 class="text-left">Below are screenshots of <b>"svg/basic/test4.svg"</b> rendered with 
 				sample rate at 1, 4, and 16: </br></p1>
-				<img src="img/Q2_rate1.png"></br></br>
-				<img src="img/Q2_rate4.png"></br></br>
-				<img src="img/Q2_rate16.png"></br></br>
+				<img src="img/Q2_rate1.png" style = "height:30%; width: 30%;">
+				<img src="img/Q2_rate4.png" style = "height:30%; width: 30%;">
+				<img src="img/Q2_rate16.png" style = "height:30%; width: 30%;"></br></br>
 				<p1 class="text-left">
 					Extra credit: I used jittered sampling. There is a similarity between jittered and grid-based 
 					sampling: both need to separate each pixel into an nxn grid with n^2 cells. The difference is 
 					that grid-based sampling takes the value in the center of each cell, while jittered sampling 
-					takes the value in the random position of each cell.
+					takes the value in the random position of each cell. Below is a comparison: (left is <b>grid-based</b> 
+					sampling and right is the <b>jittered</b> sampling):
 				</p1>
+			</br>
+				<img src="img/Q2_before_ec.png" style="height:40%; width: 40%;">
+				<img src="img/Q2_after_ec.png" style="height:40%; width: 40%;">
 			</div>
 		</br>
 
@@ -153,54 +156,80 @@
 			</div>
 		</br>
 
-			<div class = "text-center" id = "TASK4">
-				<h1 class ="font-italic"> Task 4: Barycentric coordinates </h1>
+			<div id = "TASK4">
+				<h1 class ="text-center font-italic"> Task 4: Barycentric coordinates </h1>
 				<p1 class="text-left">Barycentric coordinate is a coordinate system that we 
 					can use to interpolate values of points inside a triangle based on the
 					values of its vertices. The values include rgb values or texture coordinates.
-				</br>
 				</p1>
+			</br>
 				<p1 class="text-left">Here is an image of a smoothly blended color triangle, 
-					with red, green, blue vertex.
-				</br>
+					with red, green, blue vertex.				
 				</p1>
-				<img src="img/Q4_bary_coord_explain.png"></br>
+			</br>
+				<div align="center">
+					<img src="img/Q4_bary_coord_explain.png">
+				</div>
 				<p1 class="text-left">Below is a png screenshot of <b>"svg/basic/test7.svg"</b> with default 
 					viewing parameters and sample rate 1: </br>
 				</p1>
-				<img src="img/Q4_svg_basic.png">
+				<div align="center">
+					<img src="img/Q4_svg_basic.png">
+				</div>
 			</div>
 		</br>
 
-			<div class = "text-center" id = "TASK5">
-				<h1 class ="font-italic"> Task 5: "Pixel sampling" for texture mapping </h1>
+			<div id = "TASK5">
+				<h1 class ="text-center font-italic"> Task 5: "Pixel sampling" for texture mapping </h1>
 				<p1 class="text-left">In TASK5, I reuse the code from TASK2 to establish the 
-					iterations. But the work in the iterations are changed. In each iteration, I
-					calculate the uv coordinate (texture coordinate) of the cooresponding x, y 
-					coordinate. Then, I call <b>tex.sample_nearest</b> or <b>tex.sample_bilinear</b>
-					according to whether psm is <b>P_NEAREST</b> or <b>P_LINEAR</b>.
-				</p1>
-				<p1 class="text-left">
-					Here is a part of <b>svg/texmap/test1.svg</b> in which bilinear clear deats nearest.
-				</p1>
-				</br>
-				<img src="img/Q5_nearest.png"></br></br>
-				<img src="img/Q5_nearest_rate16.png"></br></br>
-				<img src="img/Q5_bilinear.png"></br></br>
-				<img src="img/Q5_bilinear_rate16.png"></br></br>
-				<p1 class="text-left">
-					When the screen pixels cannot cover all details, bilinear approach defeats nearest approach.
-				</p1>
-			</div>
-		</br>
-
-			<div class = "text-center" id = "TASK6">
-				<h1 class ="font-italic"> Task 6: "Level sampling" with mipmaps for <br> texture mapping </h1>
-				<p1 class="text-left">Level sampling basically means to use texture sample on different
-					levels of mipmap according to the level calculated using formulas based on coordinate
-					differentials. 
+					iterations. But the work in the iterations are changed.<br> In each iteration,
+					I first get the <b>sample point</b> (x,y). Then, I calculate the <b>barycentric coordinate</b>
+					of (x,y) in the given triangle. Next, I use the barycentric coordinate and the uv coordinates
+					of the three vertices to calculate the <b>uv coordinate</b> of the sample point (x,y).<br>
+					Next, I decide to call <b>sample_nearest</b> or <b>sample_bilinear</b> according to the psm. Then, I fill 
+					the calculated color in the corresponding sample buffer position of (x,y).
 				</p1>
 			</br>
+				<p1 class="text-left">
+					<b>sample_nearest</b>: find the nearest texel according to the given uv coordinate, and return 
+					the color at that texel.<br>
+					<b>sample_bilinear</b>: find four nearest texels, get their colors, and use the lerp function we learnt
+					from lecture to do bilinear interpolation to get the color of uv:					
+				</p1>
+				<div align="middle">
+					<img src="img/Q5_bilinear_explain.png" style="height:40%; width: 40%;">
+				</div>
+			</br>
+				<p1 class="text-left">
+					Here is a part of <b>svg/texmap/test1.svg</b> in which bilinear clear defeats nearest.
+				</p1>
+				</br>
+				<div align="middle">
+					<img src="img/Q5_nearest.png" style = "height:40%; width: 40%;">
+					<img src="img/Q5_nearest_rate16.png" style = "height:40%; width: 40%;">
+					<img src="img/Q5_bilinear.png" style = "height:40%; width: 40%;">
+					<img src="img/Q5_bilinear_rate16.png" style = "height:40%; width: 40%;"><br><br>
+				</div>
+				<p1 class="text-left">
+					When the sampling rate is increased to 16, clearly both pixel sampling methods render very smooth 
+					images and we do not really see much difference. However, when the sampling rate is 1, the bilinear 
+					sampling method renders a much smoother image than nearest sampling method.<br> When the image data is 
+					more continuous, containing elements or details that are not fully covered by each pixels, the bilinear
+					sampling method renders better image than the nearest method does.
+				</p1>
+			</div>
+		</br>
+
+			<div id = "TASK6">
+				<h1 class ="text-center font-italic"> Task 6: "Level sampling" with mipmaps for <br> texture mapping </h1>
+				<p1 class="text-left">Level sampling basically means to use texture sample on different
+					levels of mipmap according to the level calculated using formulas based on coordinate
+					differentials in the function <b>get_level</b>:
+				</p1>
+			</br>
+				<div align="middle">
+					<img src="img/Q6_explain_level.png" style="height:40%; width: 40%;">
+				</div>
 				<p1 class="text-left"> To implement <b>L_ZERO</b>, I did not do anything special and
 					repeated the work I did for TASK5 as this is basically sampling on the full resolution 
 					level.<br> To implement <b>L_NEAREST</b>, I use the <b>get_level</b> function, which
@@ -209,22 +238,85 @@
 				</p1>
 			</br>
 				<p1 class="text-left">
-					There certainly is a tradeoff between the Antialiasing power, memory, and time usage.
-					When I switch from L_ZERO to L_NEAREST, or L_NEAREST to L_LINEAR, it takes a noticeable
-					amount of time. Among the three techniques, L_LINEAR has the strongest Antialiasing power,
-					but requires largest amount of time and memory usage. L_ZERO uses full resolution, but shows
-					clear aliasing problem when differentials of uv w.r.t x and y are large, but it apparently requires
-					least amount of time and memory among the three techniques. L_NEAREST is in the middle.
-				</p1>
-				<p1 class="text-left">
 					Below are screenshots of a png of my own respectively in [L_ZERO, P_NEAREST], 
 					[L_ZERO, P_LINEAR], [L_NEAREST, P_NEAREST], [L_NEAREST, P_LINEAR]:
 				</p1>
 			</br>
-				<img src="img/Q6_zero_nearest.png"></br></br>
-				<img src="img/Q6_zero_linear.png"></br></br>
-				<img src="img/Q6_nearest_nearest.png"></br></br>
-				<img src="img/Q6_nearest_linear.png">
+				<div align="middle">
+					<img src="img/Q6_zero_nearest.png" style = "height:40%; width: 40%;">
+					<img src="img/Q6_zero_linear.png" style = "height:40%; width: 40%;">
+					<img src="img/Q6_nearest_nearest.png" style = "height:40%; width: 40%;">
+					<img src="img/Q6_nearest_linear.png" style = "height:40%; width: 40%;">
+				</div>
+			</br></br>
+			<p1 class="text-left">
+				<ul>
+					<li><b>Speed</b>:
+						<ul>
+							<li>Super sampling requires sampling multiple times per pixel, and averaging
+								down the colors when writing to the frame.
+							</li>
+							<li>The time cost of Nearest sampling is very small. While in bilinear pixel sampling,
+								we generally need to access the memory 4 times, then interpolate the color of the 
+								sample. But this should be faster than supersampling in many cases as supersampling
+								may require 16 or even more samples per pixel.
+							</li>
+							<li>
+								In this project, level sampling is based on the pixel sampling. Level Zero sampling 
+								has little introduction work to do, so it is very close to the pixel sampling it calls.
+								 Both Nearest level sampling and bilinear sampling requires calculating the differentials 
+								 in uv coordinate w.r.t x and y, and calculating the level based on them. So, the introduction
+								  work costs some time. In bilinear level sampling, we have to get the color from two levels 
+								and then lerp the result. This costs even more time.
+							</li>
+						</ul>
+					</li>
+					<li><b>Memory</b>: The only two methods that cost more memory are the <b>supersampling</b> (grid-based or jittered as 
+						in ec), and <b>level sampling</b>. In <b>supersampling</b>, we would have to scale up the capacity of the whole 
+						sample buffer in order to store the more samples. In <b>level sampling</b>, as we are storing multiple mipmap
+						levels, according to mathematics, we need 4/3 of our original memory. (Here the discussion does not include
+						memory usage in introduction work pixel sampling or level sampling)						
+					</li>
+					<li><b>Antialiasing power</b>: In this project, we can get better Antialiasing effect by using higher sampling 
+						rate, bilinear pixel and level sampling.
+					  <ul>
+						<li>
+							We think supersampling gives best antialiasing power. Supersampling antialiases in a "greedy" or 
+							"brute-force" way. The cost is increasing amount of time and memory usage. It is often times too 
+							expensive.
+						</li>
+						<li>
+							Level sampling also has a good antialiasing power. If we keep the same pixel sampling method and switches
+							 level sampling method, we can see very clear change. And in nature it resolves the artifacts caused by
+							texture with high resolution corresponding to objects far away.
+						</li>
+						<li>
+							Pixel sampling also has some good antialiasing. Actually, how we implemented bilinear pixel sampling 
+							reminds us of supersampling in some way. So we think they have similar power with certain sampling rate.
+						</li>
+					  </ul>
+					</li>
+				  </ul>
+			</p1>
+			</div>
+		</br>
+
+			<div id="TASK-EC">
+				<h1 class="text-center font-italic">Potential Extra Credit</h1>
+				<p1 class="text-left">
+					I wrote a python script to generate the elements constituting the image in svg file.
+					I try to draw a shape with wave-like upper and down boundaries. So I used cosine and sine 
+					functions in the range i = [0,600]. I divide i by 10 to make the wave not so radical, and multiply
+					the result of the cosine and sine functions by 10 to enlarge the amplitude of the wave. Now I get the 
+					1202 points (601 up and 601 down), I construct 600 rectangles out of them, taking every two of the 
+					upper points and every two of the down points, and further divide these rectangles into two triangles.
+					I made two of this shape. One is filled with grey color, another filled with randomly generated color. These 
+					triangles are interpolated by the colors at its vertices. <br> What I like of this pair of shapes
+					is that it looks like the grey one is the shadow of the colorful one.
+				</p1>
+				<div align="center">
+					<img src="img/competition.png">
+				</div>
 			</div>
 		</div>
 	</body>
